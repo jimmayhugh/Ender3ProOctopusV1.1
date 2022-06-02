@@ -69,7 +69,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Buttcrack, OctopusV1.1 20220526)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Buttcrack, OctopusV1.1 20220602)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -148,7 +148,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Buttcrack 20220526 ABL 230x220 HotendPID BedPID G28->G29"
+#define CUSTOM_MACHINE_NAME "Buttcrack 20220602 ABL 230x220 HotendPID CastBedPID G28->G29"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -593,8 +593,8 @@
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
+  #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
+  #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
@@ -605,9 +605,9 @@
     #define DEFAULT_Ki_LIST {   0.5675,   0.5675 }
     #define DEFAULT_Kd_LIST { 81.1811, 81.1811 }
   #else
-    #define DEFAULT_Kp  13.5754
-    #define DEFAULT_Ki   0.5675
-    #define DEFAULT_Kd 81.1811
+    #define DEFAULT_Kp  12.6065 //PETG jlm
+    #define DEFAULT_Ki   0.4955
+    #define DEFAULT_Kd  80.1771
   #endif
 #endif // PIDTEMP
 
@@ -646,9 +646,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 166.4468
-  #define DEFAULT_bedKi  31.5240
-  #define DEFAULT_bedKd 585.8928
+  #define DEFAULT_bedKp  48.8798 // MandalaRose Cast Aluminum bed jlm
+  #define DEFAULT_bedKi   9.7421
+  #define DEFAULT_bedKd 170.2564
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
